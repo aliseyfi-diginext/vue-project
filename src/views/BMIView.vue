@@ -1,5 +1,10 @@
 <template>
-    <hr>
+
+    <!-- در این قسمت ما از دو
+    event
+    استفاده کردیم
+    @submit.prevent = هنگامی که کاربر فرم را سابمیت میکند
+    @input = هنگامی که کاربر در فیلد های مربوطه تایپ میکند -->
     <form class="" @submit.prevent="calc">
         <div class="form-group">
             <label> Weight (kg) </label>
@@ -16,12 +21,17 @@
 
     <hr>
 
+    <!-- اگر مقادیر لازم مانند
+    weight و height و bmi
+    موجود بود آنها را نمایش بده -->
     <div v-if="weight && height && bmi" class="">
         <p> Weight : {{weight}} </p>
         <p> Height : {{height}} </p>
         <p> BMI : {{bmi}} </p>
         <p> Status : {{status}} </p>
     </div>
+
+    <!-- در غیر این صورت متن زیر را نمایش بده -->
     <div v-else>
         Please Enter Your Height & Width
     </div>
@@ -30,6 +40,8 @@
 
 <script>
     export default {
+
+        // در این بخش داده های مورد نیازمان را تعریف میکنیم
         data : function () {
             return {
                 weight : null,
@@ -37,6 +49,8 @@
                 bmi : null,
             }
         },
+
+        // در این قسمت توابع یا متد های مورد نیازمان را تعریف میکنیم
         methods : {
             calc : function () {
                 var w = this.weight;
@@ -45,6 +59,8 @@
                 this.bmi = bmi;
             }
         },
+
+        // در این قسمت داده هایی که برای تایین مقدار آنها به یک سری محاسبات نیاز داریم را تعریف میکنیم
         computed : {
             status : function () {
                 if (this.bmi < 18.5) {
@@ -60,6 +76,7 @@
                 }
             }
         }
+
     }
 </script>
 
