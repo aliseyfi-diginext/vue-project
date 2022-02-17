@@ -7,6 +7,7 @@ import BMIView from '../views/BMIView.vue'
 import ProductView from '../views/ProductView.vue'
 import QuizView from '../views/QuizView.vue'
 import PeopleInSpaceView from '../views/PeopleInSpaceView.vue'
+import TaskManagerView from '../views/TaskManagerView.vue'
 
 // در این قسمت روت های مورد نیازمان را تعریف میکنیم
 const router = createRouter({
@@ -36,6 +37,11 @@ const router = createRouter({
       path: '/quiz/:number?',
       name: 'iqtest',
       component: QuizView
+    },
+    {
+      path: '/task-manager',
+      name: 'task-manager',
+      component: TaskManagerView
     },
   ]
 })

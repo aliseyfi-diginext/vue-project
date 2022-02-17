@@ -17,6 +17,9 @@
                 <RouterLink :class="currentRoute == 'iqtest' ? 'active' : ''" to="/quiz">
                     IQ Test
                 </RouterLink>
+                <RouterLink :class="currentRoute == 'task-manager' ? 'active' : ''" to="/task-manager">
+                    Task Manager
+                </RouterLink>
             </nav>
         </div>
     </header>
