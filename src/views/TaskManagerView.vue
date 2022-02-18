@@ -2,7 +2,7 @@
     <div class="container">
 
         <div class="text-end">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#task-modal">
+            <button type="button" class="btn btn-primary" @click="openModal()">
                 <i class="bi bi-plus"></i>
                 Create new task
             </button>
@@ -38,7 +38,7 @@
                     </td>
                     <td> {{task.created_at}} </td>
                     <td>
-                        <button type="button" class="btn btn-sm btn-outline-success" @click="editTask(i)">
+                        <button type="button" class="btn btn-sm btn-outline-success" @click="openModal(i)">
                             <i class="bi bi-pen"></i>
                             Edit
                         </button>
@@ -136,9 +136,13 @@ export default {
         }
     },
     methods : {
-        editTask : function (index) {
-            var task = this.tasks[index];
-            this.currentTask = task;
+        openModal : function (index=-1) {
+            if (index < 0) {
+                this.currentTask = {};
+            }else {
+                var task = this.tasks[index];
+                this.currentTask = task;
+            }
             this.modal.show();
         },
         changeStatus : function (task) {
@@ -159,6 +163,7 @@ export default {
         },
         saveTask : function () {
             var task = this.currentTask;
+            console.log(task);
             this.saving = true;
             var url = task.id ? `${config.address}/task/${task.id}` :`${config.address}/task`;
             var headers = {Authorization:`Bearer:${config.token}`};
@@ -177,10 +182,25 @@ export default {
                         title: 'Changes made successfully',
                         showConfirmButton: false,
                         timer: 1500
-                    });
+                    })
                     this.tasks.unshift(res.data);
                     this.modal.hide();
                 }
+                this.saving = false;
+            }).catch( err => {
+                var errors = err.response.data.errors;
+                var message = err.response.data.message;
+                var text = '';
+                for (var key in errors) {
+                    var arrayOfErrors = errors[key];
+                    var stringOfErrors = arrayOfErrors.join(' & ');
+                    text += `<p>${stringOfErrors}</p>`;
+                }
+                Swal.fire({
+                    icon: 'error',
+                    title: message,
+                    html: text,
+                });
                 this.saving = false;
             });
         },
