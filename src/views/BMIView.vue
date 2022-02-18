@@ -6,16 +6,18 @@
     @submit.prevent = هنگامی که کاربر فرم را سابمیت میکند
     @input = هنگامی که کاربر در فیلد های مربوطه تایپ میکند -->
     <form @submit.prevent="calc">
-        <div class="form-group">
-            <label> Weight (kg) </label>
-            <input @input="calc" type="number" v-model="weight">
+        <div class="row justify-content-center">
+            <div class="form-group my-3 col-md-4">
+                <label> Weight (kg) </label>
+                <input @input="calc" class="form-control" type="number" v-model="weight">
+            </div>
+            <div class="form-group my-3 col-md-4">
+                <label> Height (cm) </label>
+                <input @input="calc" class="form-control" type="number" v-model="height">
+            </div>
         </div>
-        <div class="form-group">
-            <label> Height (cm) </label>
-            <input @input="calc" type="number" v-model="height">
-        </div>
-        <div class="form-group">
-            <button type="submit"> Submit </button>
+        <div class="form-group my-3 col-md-12 text-center">
+            <button type="submit" class="btn btn-primary"> Submit </button>
         </div>
     </form>
 
