@@ -5,7 +5,7 @@
     استفاده کردیم
     @submit.prevent = هنگامی که کاربر فرم را سابمیت میکند
     @input = هنگامی که کاربر در فیلد های مربوطه تایپ میکند -->
-    <form class="" @submit.prevent="calc">
+    <form @submit.prevent="calc">
         <div class="form-group">
             <label> Weight (kg) </label>
             <input @input="calc" type="number" v-model="weight">
