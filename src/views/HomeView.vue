@@ -4,6 +4,6 @@
 
 <template>
     <div>
-        salam 5
+        salam be iran
     </div>
 </template>
