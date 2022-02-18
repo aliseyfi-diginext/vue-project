@@ -4,7 +4,7 @@
         <!-- هنگامی که روی این دکمه کلیک شد متد
         add
         را صدا بزن -->
-        <button type="button" @click="add"> Add Another Product </button>
+        <button type="button" class="btn btn-primary" @click="add"> Add Another Product </button>
     </div>
 
     <hr>
@@ -18,7 +18,7 @@
 
         <div class="form-group">
             <label> Product Name </label>
-            <input type="text" v-model="product.name">
+            <input class="form-control" type="text" v-model="product.name">
         </div>
 
         <div class="form-group">
@@ -28,7 +28,7 @@
             product
             را به عنوان آرگومان به آن پاس بده -->
             <label> Product Price </label>
-            <input @input="calcPayable(product)" type="number" v-model="product.price">
+            <input class="form-control" @input="calcPayable(product)" type="number" v-model="product.price">
         </div>
 
         <div class="form-group">
@@ -38,7 +38,7 @@
             product
             را به عنوان آرگومان به آن پاس بده -->
             <label> Discount Percent </label>
-            <input @input="calcPayable(product)" type="number" min="0" max="100" v-model="product.percent">
+            <input class="form-control" @input="calcPayable(product)" type="number" min="0" max="100" v-model="product.percent">
         </div>
 
         <div class="">
